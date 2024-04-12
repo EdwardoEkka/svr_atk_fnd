@@ -21,7 +21,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://192.168.1.2:5000/players-log", {
+      const response = await axios.post("http://192.168.1.5:5000/players-log", {
         username,
         password,
       });
@@ -36,9 +36,9 @@ const Login = () => {
   };
 
   return (
-    <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",marginTop:"100px"}}>
+    <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
       {!isLoggedIn ? (
-        <div>
+        <div style={{marginTop:"100px"}}>
           <h2 style={{textAlign:"center"}}>Login to your server</h2>
           <form onSubmit={handleLogin} style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
             <input
@@ -62,7 +62,7 @@ const Login = () => {
             <br></br>
             <button style={{width:"100px",height:"30px"}} type="submit">Login</button>
           </form>
-          <h3 style={{textAlign:"center"}} onClick={() => navigate("/signup")}>Server not created, create!</h3>
+          <h3 style={{textAlign:"center"}} onClick={() => navigate("/signup")}>Server not created, create➡️</h3>
         </div>
       ) : (
         <div>

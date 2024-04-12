@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
-const socket = io('http://192.168.1.2:5000'); // Replace with your server URL
+const socket = io('http://192.168.1.5:5000'); // Replace with your server URL
 
 function Sky() {
-  const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-
-  // Function to send message
-  const sendMessage = () => {
-    socket.emit('talk', message);
-    setMessage('');
-  };
 
   useEffect(() => {
     // Listen for incoming messages
@@ -25,6 +18,14 @@ function Sky() {
       socket.off('talk');
     };
   }, []);
+
+  useEffect(() => {
+    // Check if the length of messages is 10
+    if (messages.length === 20) {
+      // Reset messages to an empty array
+      setMessages([]);
+    }
+  }, [messages]);
 
   return (
     <div>

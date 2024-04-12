@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import socketIOClient from "socket.io-client";
-import Sky from "../dum";
+import Sky from "./dum";
 
-const ENDPOINT = "http://192.168.1.2:5000";
+const ENDPOINT = "http://192.168.1.5:5000";
 
 const App = () => {
   const [leaderboard, setLeaderboard] = useState([]);
@@ -24,7 +24,7 @@ const App = () => {
 
   const fetchLeaderboard = async () => {
     try {
-      const response = await axios.get("http://192.168.1.2:5000/leaderboard");
+      const response = await axios.get("http://192.168.1.5:5000/leaderboard");
       setLeaderboard(response.data);
     } catch (error) {
       console.error("Error fetching leaderboard:", error);
@@ -35,45 +35,37 @@ const App = () => {
     <div>
       <div
         style={{
-          border: "1px solid black",
-          width: "400px",
+          // border: "1px solid black",
+          width: "300px",
           height: "600px",
           marginLeft: "50px",
           marginTop: "10px",
           padding: "20px",
         }}
       >
-        <h1>Leaderboard</h1>
+        <h1 style={{ textAlign: "center" }}>Leaderboard</h1>
         <p onClick={fetchLeaderboard}></p>
-        <ul style={{ listStyleType: "none", padding: 0 }}>
-          {leaderboard.map((player, index) => (
-            <li
-              key={index}
-              style={{
-                borderBottom: "1px solid #ccc",
-                padding: "10px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff",
-              }}
-            >
-              <div style={{ flex: 1 }}>
-                <span style={{ fontWeight: "bold" }}>Server:</span>{" "}
-                {player.username}
-              </div>
-              <div style={{ flex: 1, textAlign: "center" }}>
-                <span style={{ fontWeight: "bold" }}>Points:</span>{" "}
-                {player.tokens}
-              </div>
-              <div style={{ flex: 1, textAlign: "right" }}>
-                <span style={{ fontWeight: "bold" }}>Level:</span>{" "}
-                {player.level}
-              </div>
-            </li>
-          ))}
-        </ul>
-        <Sky/>
+        <table style={{ width: "100%" }}>
+          <thead>
+            <tr>
+              <th style={{ textAlign: "left" }}>Server</th>
+              <th style={{ textAlign: "center" }}>Points</th>
+              <th style={{ textAlign: "right" }}>Level</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leaderboard.map((player, index) => (
+              <tr
+                key={index}
+              >
+                <td style={{ textAlign: "left" }}>{player.username}</td>
+                <td style={{ textAlign: "center" }}>{player.tokens}</td>
+                <td style={{ textAlign: "right" }}>{player.level}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {/* <Sky /> */}
       </div>
     </div>
   );

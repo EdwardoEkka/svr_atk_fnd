@@ -7,7 +7,7 @@ const ChatApp = () => {
   const [inputMessage, setInputMessage] = useState('');
 
   useEffect(() => {
-    const newSocket = io('http://192.168.1.2:5000'); 
+    const newSocket = io('http://192.168.1.5:5000'); 
 
     newSocket.on('message', (data) => {
       setMessages(prevMessages => [...prevMessages, data]);

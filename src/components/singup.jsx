@@ -10,7 +10,7 @@ const SignUp=()=>{
     const handleAddPlayer = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post("http://192.168.1.2:5000/player-login", {
+          const response = await axios.post("http://192.168.1.5:5000/player-login", {
             username,
             registrationNumber,
             password, // Include the password in the request data
@@ -22,7 +22,9 @@ const SignUp=()=>{
       };
     
     return(
-        <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",marginTop:"100px"}}>
+        <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+          <div style={{marginTop:"100px"}}>
+
           <h2>Create a server</h2>
             <form onSubmit={handleAddPlayer} style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
         <input
@@ -54,7 +56,8 @@ const SignUp=()=>{
         <br></br>
         <button style={{width:"100px",height:"30px"}} type="submit">Add Server</button>
       </form>
-      <h3 onClick={()=>{navigate("/")}}>Back to sign in</h3>
+      <h3 onClick={()=>{navigate("/")}}>⬅️Back to Log in</h3>
+          </div>
         </div>
     )
 }

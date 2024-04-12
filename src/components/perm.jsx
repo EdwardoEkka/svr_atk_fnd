@@ -34,22 +34,25 @@ function PermutationsFinder() {
   };
 
   return (
-    <div>
-      <h2>Permutations Finder</h2>
-      <label>
-        Enter letters:
-        <input type="text" value={inputLetters} onChange={handleInputChange} />
-      </label>
-      <button onClick={handleFindPermutations}>Find Permutations</button>
-      <div>
-        <h3>Permutations:</h3>
-        <ul>
-          {permutations.map((perm, index) => (
-            <li key={index}>{perm}</li>
-          ))}
-        </ul>
-      </div>
+<div>
+  <h2>Permutations Finder</h2>
+  <label>
+    Enter letters:
+    <input type="text" value={inputLetters} onChange={handleInputChange} />
+  </label>
+  <button onClick={handleFindPermutations}>Find Permutations</button>
+  <div>
+    <h3>Permutations:</h3>
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      {permutations.map((perm, index) => (
+        <div key={index} style={{ width: 'calc(100% / 5)', marginBottom: '5px' }}>
+          {perm}
+        </div>
+      ))}
     </div>
+  </div>
+</div>
+
   );
 }
 

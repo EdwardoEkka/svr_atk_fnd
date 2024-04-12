@@ -7,7 +7,7 @@ const Secure = () => {
   const handleSecureDb = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put("http://192.168.1.2:5000/secure", {
+      const response = await axios.put("http://192.168.1.5:5000/secure", {
         player: securePlayer,
       });
       alert(response.data.message);

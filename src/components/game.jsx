@@ -3,6 +3,12 @@ import Level0 from './level0';
 import LevelOne from './level1';
 import LevelTwo from './level2';
 import LevelThree from './level3';
+import Level4 from './level4';
+import Level5 from './level5';
+import Level6 from './level6';
+import Level7 from './level7';
+import Level8 from './level8';
+import Level9 from './level9';
 import axios from "axios";
 import Steal from './steal';
 import { useNavigate } from "react-router-dom";
@@ -26,7 +32,7 @@ function Final() {
 
     const fetchPlayerData = async () => {
         try {
-            const response = await axios.post('http://192.168.1.2:5000/playerLevel', { username: username });
+            const response = await axios.post('http://192.168.1.5:5000/playerLevel', { username: username });
             const { level } = response.data;
             const { tokens }=response.data;
             setTokens(tokens);
@@ -38,14 +44,14 @@ function Final() {
     };
     useEffect(() => {
 
-        fetchPlayerData(username); 
+        fetchPlayerData(); 
     },);
 
 
     const handleComplete = async () => {
       fetchPlayerData(username);
       try {
-          await axios.post('http://192.168.1.2:5000/updatePlayerLevel', { username: username });
+          await axios.post('http://192.168.1.5:5000/updatePlayerLevel', { username: username });
           setLevel(level + 1);
           console.log('Congratulations! You have completed the level!');
           setStealMode(!stealMode);
@@ -63,21 +69,26 @@ function Final() {
 
     return (
         <div >
-          <div style={{border:"1px solid black",width:"400px",height:"600px",marginLeft:"50px",marginTop:"10px",padding:"20px"}}>
+          <div style={{width:"400px",height:"600px",marginLeft:"50px",padding:"20px"}}>
           <h3>Server name:{username}</h3>
   
-            {stealMode ? "": (level !== 4 && <h1>Level: {level}</h1>)}
+            {stealMode ? "": (level !== 10 && <h1>Level: {level}</h1>)}
             {stealMode?<Steal onStealMode={SMode}/>:""}
             {stealMode?"":(level === 0 && <Level0 onComplete={handleComplete} />)}
             {stealMode?"":(level === 1 && <LevelOne onComplete={handleComplete} />)}
             {stealMode?"":(level === 2 && <LevelTwo onComplete={handleComplete} />)}
             {stealMode?"":(level === 3 && <LevelThree onComplete={handleComplete} />)}
-            {stealMode?"":(level === 4 && <h1>Game Over</h1>)}
+            {stealMode?"":(level === 4 && <Level4 onComplete={handleComplete} />)}
+            {stealMode?"":(level === 5 && <Level5 onComplete={handleComplete} />)}
+            {stealMode?"":(level === 6 && <Level6 onComplete={handleComplete} />)}
+            {stealMode?"":(level === 7 && <Level7 onComplete={handleComplete} />)}
+            {stealMode?"":(level === 8 && <Level8 onComplete={handleComplete} />)}
+            {stealMode?"":(level === 9 && <Level9 onComplete={handleComplete} />)}
+            {stealMode?"":(level === 10 && <h1>Game Over</h1>)}
             <br></br>
             <li>Solve each level.</li>
             <li>Use the tools to decrypt the Firewall.</li>
-            <li>Retrieve the firewall token.</li>
-            <li>The more you use the tools more you will loose.</li>
+            <li>Retrieve the firewall passcode.</li>
           </div>
         </div>
     );

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useUser } from "./userContext";
 import io from "socket.io-client";
 
-const socket = io('http://192.168.1.2:5000'); 
+const socket = io('http://192.168.1.5:5000'); 
 
 const Steal = ({ onStealMode }) => {
   
@@ -11,53 +11,58 @@ const Steal = ({ onStealMode }) => {
   const puzz = [
     {
       "puzzle_number":0,
-      "description": "Sp Tyrx rkc 5 kzzvoc kxn ro qsfoc 2 dy rsc pbsoxn, ryg wkxi kzzvoc nyoc ro rkfo vopd?",
-      "answer": 3
+      "description": "The firewall passcode is the sum of these binary numbers in decimal 10000 11010 11011 111",
+      "answer": 76
     },
     {
       "puzzle_number":1,
-      "description": "-- .- .-. -.-- / -... --- ..- --. .... - / ...-- / .--. .- -.-. -.- ... / --- ..-. / .--. . -. -.-. .. .-.. ... --..-- / .-- .. - .... / . .- -.-. .... / .--. .- -.-. -.- / -.-. --- -. - .- .. -. .. -. --. / -.... / .--. . -. -.-. .. .-.. ... .-.-.- / .... --- .-- / -- .- -. -.-- / .--. . -. -.-. .. .-.. ... / -.. .. -.. / ... .... . / -... ..- -.-- / .. -. / - --- - .- .-.. ..--..",
-      "answer": 18
+      "description": "Firewall  passcode consist of letters 'c','e','r','a' guess the passcode",
+      "answer": "acer"
     },
     {
       "puzzle_number":2,
-      "description": "Pm aolyl hyl 10 zabkluaz pu h jshzz huk lhjo zabklua ohz 4 ivvrz, ovd thuf ivvrz hyl aolyl pu avahs?",
-      "answer": 40
+      "description": ".. / .- -- / .- -. / --- -.. -.. / -. ..- -- -... . .-. .-.-.- / - .- -.- . / .- .-- .- -.-- / --- -. . / .-.. . - - . .-. / .- -. -.. / .. / -... . -.-. --- -- . / . ...- . -. .-.-.- / .-- .... .- - / -. ..- -- -... . .-. / .- -- / .. ..--..",
+      "answer": 7
     },
     {
       "puzzle_number":3,
-      "description": "- --- -- / ... .- ...- . -.. / ..... ..--- ----- / . .- -.-. .... / .-- . . -.- / ..-. --- .-. / ....- / .-- . . -.- ... .-.-.- / .... --- .-- / -- ..- -.-. .... / -- --- -. . -.-- / -.. .. -.. / .... . / ... .- ...- . / .. -. / - --- - .- .-.. ..--..",
-      "answer": 80
+      "description": "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I? I am consist of the letters 'o','e','h','c'?",
+      "answer": 'echo'
     },
     {
       "puzzle_number":4,
-      "description": "... .- .-. .- .... / .... .- -.. / ..--- ....- / -.-. .- -. -.. .. . ... --..-- / .- -. -.. / ... .... . / --. .- ...- . / .... .- .-.. ..-. / --- ..-. / - .... . -- / - --- / .... . .-. / -... .-. --- - .... . .-. .-.-.- / .... --- .-- / -- .- -. -.-- / -.-. .- -. -.. .. . ... / -.. --- . ... / ... .... . / .... .- ...- . / .-.. . ..-. - ..--..",
-      "answer": 12
+      "description": "Iye uxyg 2 + 2 mywoc dy dro ckwo kc 2 h 2. Xyg psxn k cod yp drboo nsppoboxd gryvo xewlobc gryco cew sc oaekv dy drosb dydkv grox wevdszvson. Psxn dro cew yp drboo xewlobc.",
+      "answer": 6
     },
     {
       "puzzle_number":5,
-      "description": ".. ..-. / .- / .--. .. --.. --.. .- / .. ... / -.-. ..- - / .. -. - --- / ---.. / ... .-.. .. -.-. . ... / .- -. -.. / ...-- / ... .-.. .. -.-. . ... / .- .-. . / . .- - . -. --..-- / .... --- .-- / -- .- -. -.-- / ... .-.. .. -.-. . ... / .- .-. . / .-.. . ..-. - ..--..",
-      "answer": 5
+      "description": "/ .-- .... .- - / .. ... / - .... . / ... -- .- .-.. .-.. . ... - / -. ..- -- -... . .-. / - .... .- - / .. -. -.-. .-. . .- ... . ... / -... -.-- / .---- ..--- / .-- .... . -. / .. - / .. ... / ..-. .-.. .. .--. .--. . -.. / .- -. -.. / - ..- .-. -. . -.. / ..- .--. ... .. -.. . -....- -.. --- .-- -. ..--..",
+      "answer": 86
     },
     {
       "puzzle_number":6,
-      "description": "M naj oazfmuze 15 otaoaxmfqe. Ur 5 otaoaxmfqe mdq fmwqz agf, tai ymzk otaoaxmfqe mdq xqrf uz ftq naj?",
-      "answer": 10
+      "description": "Zkhq Pljxho zdv 6 bhduv rog, klv olwwoh vlvwhu, Ohlod, zdv kdoi klv djh. Li Pljxho lv 40 bhduv rog wrgdb, krz rog lv Ohlod?",
+      "answer": 37
     },
     {
       "puzzle_number":7,
-      "description": "Wkhuh duh 6 erwwohv rq wkh wdeoh, dqg 2 erwwohv duh wdnhq dzdb. Krz pdqb erwwohv duh ohiw rq wkh wdeoh?",
-      "answer": 4
+      "description": "I'm not alive, but I can grow; I don't have lungs, but I need air; I don't have a mouth, but water kills me. What am I? I am consist of the letters 'i','r','f','e'?",
+      "answer": 'fire'
     },
     {
       "puzzle_number":8,
-      "description": ".- / -... .- -.- . .-. / -... .- -.- . -.. / ..--- ....- / -.-. --- --- -.- .. . ... --..-- / .- -. -.. / -.... / --- ..-. / - .... . -- / .-- . .-. . / . .- - . -. .-.-.- / .... --- .-- / -- .- -. -.-- / -.-. --- --- -.- .. . ... / .- .-. . / .-.. . ..-. - ..--..",
-      "answer": 18
+      "description": "The firewall passcode is the product of the binary numbers 0011*10111*10001 in decimal?",
+      "answer": 1173
     },
     {
       "puzzle_number":9,
-      "description": "Mj e xvemr xvezipw 50 qmpiw tiv lsyv jsv 3 lsyvw, lsa jev hsiw mx xvezip mr xsxep?",
-      "answer": 150
+      "description": ".-- .... .- - / .. ... / - .... . / ... -- .- .-.. .-.. . ... - / .-- .... --- .-.. . / -. ..- -- -... . .-. / - .... .- - / .. ... / . --.- ..- .- .-.. / - --- / ... . ...- . -. / - .. -- . ... / - .... . / ... ..- -- / --- ..-. / .. - ... / -.. .. --. .. - ... ..--..",
+      "answer": 21
+    },
+    {
+      "puzzle_number":10,
+      "description": "Vul iyvaoly zhfz vm opz fvbunly iyvaoly: “Adv flhyz hnv, P dhz aoyll aptlz hz vsk hz tf iyvaoly dhz. Pu aoyll flhyz aptl, P dpss il adpjl hz vsk hz tf iyvaoly.” Ovd vsk hyl aolf lhjo uvd? Npcl aol zbt vm aolpy jbyylua hnlz.",
+      "answer": 24
     }
   ];
   
@@ -73,12 +78,10 @@ const Steal = ({ onStealMode }) => {
   const [userAnswer, setUserAnswer] = useState("");
   const [loading, setLoading] = useState(false); // State for loading
   const [verifying, setVerifying] = useState(false); // State for verifying
-  const [message, setMessage] = useState('');
+  const [timerExpired, setTimerExpired] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState(240); 
   
-  const sendMessage = () => {
-    socket.emit('talk', message);
-  };
-
+ 
   useEffect(() => {
     window.addEventListener("beforeunload", handleBeforeUnload);
 
@@ -94,7 +97,7 @@ const Steal = ({ onStealMode }) => {
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
-        const response = await axios.get("http://192.168.1.2:5000/getPlayers");
+        const response = await axios.get("http://192.168.1.5:5000/getPlayers");
         setPlayers(response.data);
       } catch (error) {
         console.error("Error fetching players:", error);
@@ -110,24 +113,67 @@ const Steal = ({ onStealMode }) => {
       event.returnValue = "";
     }
   };
+
+  useEffect(() => {
+    if (currentPuzzle) {
+      const timer = setInterval(() => {
+        setTimeRemaining(prevTime => {
+          if (prevTime > 0) {
+            return prevTime - 1;
+          } else {
+            setTimerExpired(true);
+            clearInterval(timer);
+            return 0;
+          }
+        });
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  }, [currentPuzzle]);
   
-  const generateRandomPuzzle = () => {
-    const randomIndex = Math.floor(Math.random() * puzz.length);
-    setCurrentPuzzle(puzz[randomIndex]);
-    setUserAnswer("");
-    setAnswerCorrect(false);
-  };
+  
+  const fetchPlayerLevel = async () => {
+    try {
+        const response = await axios.post('http://192.168.1.5:5000/playerLevel', { username: username });
+        const { level } = response.data;
+        console.log(level);
+        return level;
+    } catch (error) {
+        console.error('Error fetching player data:', error.response.data.message);
+        return null;
+    }
+};
+
+
+const generateRandomPuzzle = async () => {
+  try {
+      const playerLevel = await fetchPlayerLevel();
+      if (playerLevel !== null) {
+          setCurrentPuzzle(puzz[playerLevel]);
+          setUserAnswer("");
+          setAnswerCorrect(false);
+          setTimerExpired(false);
+          setTimeRemaining(240);
+      } else {
+          console.error('Error fetching player level.');
+      }
+  } catch (error) {
+      console.error('Error generating random puzzle:', error);
+  }
+};
+
 
   const checkAnswer = () => {
-    const isCorrect = parseInt(userAnswer) === currentPuzzle.answer;
+    const isCorrect = userAnswer.trim().toLowerCase() === currentPuzzle.answer.toString();
     if (isCorrect) {
-      setMessage(`${username} has hacked into ${player}`)
       alert("Correct answer!");
     } else {
       alert("Wrong answer. Try again.");
     }
     return isCorrect;
   };
+  
 
   const isCorrect=()=>{
     return parseInt(userAnswer) === currentPuzzle.answer;
@@ -138,11 +184,11 @@ const Steal = ({ onStealMode }) => {
     if (isCorrect) {
       try {
         setLoading(true); 
-        const response = await axios.post("http://192.168.1.2:5000/steal", {
+        const response = await axios.post("http://192.168.1.5:5000/steal", {
           username,
           player,
         });
-        sendMessage();
+        socket.emit('talk', `${username} has hacked into ${player}`);
         setVerifying(true); // Start verifying
         onStealMode();
         alert(response.data.message);
@@ -158,9 +204,9 @@ const Steal = ({ onStealMode }) => {
     }
   };
 
-  const fetchLeaderboard = async () => {
+  const fetchLeaderboard = async() => {
     try {
-      await axios.get("http://192.168.1.2:5000/leaderboard");
+      await axios.get("http://192.168.1.5:5000/leaderboard");
     } catch (error) {
       console.error("Error fetching leaderboard:", error);
     }
@@ -168,12 +214,20 @@ const Steal = ({ onStealMode }) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://192.168.1.2:5000/setAttack', { player:username, set:false });
+      const response = await axios.post('http://192.168.1.5:5000/setAttack', { player:username, set:false });
       console.log(response);
     } catch (error) {
       console.error('Error updating secure field:', error);
     }
   };
+  
+
+
+  useEffect(() => {
+    if (timerExpired && currentPuzzle) {
+      onStealMode();
+    }
+  }, [timerExpired, currentPuzzle, onStealMode]);
 
   return (
     <div style={{ textAlign: 'center', marginTop: '20px' }}>
@@ -182,7 +236,7 @@ const Steal = ({ onStealMode }) => {
       value={player}
       onChange={(e) => setPlayer(e.target.value)}
       required
-      style={{ marginBottom: '10px' }}
+      style={{ marginBottom: '10px',marginRight:"20px"}}
     >
       <option value="">Select Server</option>
       {players.map((player) => (
@@ -191,14 +245,16 @@ const Steal = ({ onStealMode }) => {
         </option>
       ))}
     </select>
+    <br></br>
     <button onClick={generateRandomPuzzle} style={{ marginBottom: '10px' }}>
       Start hacking
     </button>
     <h4>Decrypt and solve the Firewall</h4>
     {currentPuzzle && (
       <>
+       <h4>Time remaining: {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}</h4>
         <p>{currentPuzzle.description}</p>
-        <h4>Firewall token Retrieved</h4>
+        <h4>Retrieved Firewall Passcode</h4>
         <input
           type="text"
           value={userAnswer}
@@ -207,11 +263,12 @@ const Steal = ({ onStealMode }) => {
         />
         <br />
         <button onClick={() => setAnswerCorrect(checkAnswer())}>
-          Check Answer
+          Check Passcode
         </button>
       </>
     )}
     <br />
+    <br></br>
     <button
       disabled={loading || verifying}
       onClick={() => {
@@ -221,7 +278,7 @@ const Steal = ({ onStealMode }) => {
       }}
       style={{ marginBottom: '10px' }}
     >
-      {loading ? "Hacking..." : verifying ? "Verifying..." : "Steal Resources"}
+      {loading ? "Hacking..." : verifying ? "Verifying..." : "Proceed"}
     </button>
   </div>
   
